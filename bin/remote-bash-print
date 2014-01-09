@@ -1,0 +1,16 @@
+#!/bin/bash
+
+function remote_bash() {
+    local server
+
+    server="$1"
+    shift
+
+    ssh -q \
+        -o Batchmode=yes \
+        -o StrictHostKeyChecking=no \
+        -o UserKnownHostsFile=/dev/null \
+        "$server" bash -s -- "$@"
+}
+
+head -n $(expr $LINENO - 1) $0
