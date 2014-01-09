@@ -13,5 +13,5 @@ function remote_bash() {
         "$server" bash -s -- "$@"
 }
 LAST_LINE=$LINENO
-
+set -eu
 head -n $(expr $LAST_LINE - 1) $0 | sed -e "s/remote_bash/$1/g"
